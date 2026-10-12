@@ -14,7 +14,12 @@
     "type": "string"
   },
   "default_target": {
-    "description": "默认目标会话标识，格式为 平台ID:消息类型:会话ID",
+    "description": "默认目标会话标识（所有等级共用），格式为 平台ID:消息类型:会话ID",
     "type": "string"
+  },
+  "ai_timeout": {
+    "description": "独立AI处理超时（秒）",
+    "type": "int",
+    "default": 60
   }
 }
