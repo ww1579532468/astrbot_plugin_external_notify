@@ -20,12 +20,3 @@ AstrBot 插件：接收外部 HTTP 请求，将文本发送到指定会话。
 `message` 必填；`target` 可省略，使用默认目标。
 可选 `title` 字段；不传时只发送正文。
 成功返回 `{"success": true}`；失败返回 HTTP 错误状态和 `error`。
-
-此版本尚未加入 AI 处理和数字处理等级。
-公网部署建议使用 HTTPS，避免明文传输 Token。
-请勿将部署凭据、实际会话标识或运行数据提交到仓库。
-
-## 许可证
-
-本项目采用 Creative Commons Attribution 4.0 International（CC BY 4.0）协议。
-完整条款见 `LICENSE`。署名作者：ww。
