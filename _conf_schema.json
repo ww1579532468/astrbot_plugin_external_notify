@@ -10,7 +10,7 @@
     "default": 8080
   },
   "token": {
-    "description": "Webhook鉴权Token（必填）",
+    "description": "Webhook鉴权Token（可选，留空关闭鉴权）",
     "type": "string"
   },
   "default_target": {

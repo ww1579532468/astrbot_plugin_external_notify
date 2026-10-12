@@ -31,6 +31,10 @@ class ExternalNotifyPlugin(Star):
             site = web.TCPSite(self._runner, self.host, self.port)
             await site.start()
             logger.info(f"[{PLUGIN_NAME}] Webhook listening on {self.host}:{self.port}")
+            if not self.token:
+                logger.warning(
+                    f"[{PLUGIN_NAME}] Webhook authentication is disabled: token is empty"
+                )
         except Exception:
             logger.exception(f"[{PLUGIN_NAME}] Failed to start Webhook server")
             if self._runner:
@@ -38,18 +42,15 @@ class ExternalNotifyPlugin(Star):
                 self._runner = None
 
     async def _handle_webhook(self, request: web.Request) -> web.Response:
-        if not self.token:
-            return web.json_response(
-                {"success": False, "error": "plugin token is not configured"},
-                status=503,
+        if self.token:
+            authorization = request.headers.get("Authorization", "")
+            supplied_token = (
+                authorization[7:].strip() if authorization.startswith("Bearer ") else ""
             )
-
-        authorization = request.headers.get("Authorization", "")
-        supplied_token = authorization[7:].strip() if authorization.startswith("Bearer ") else ""
-        if not hmac.compare_digest(supplied_token, self.token):
-            return web.json_response(
-                {"success": False, "error": "unauthorized"}, status=401
-            )
+            if not hmac.compare_digest(supplied_token, self.token):
+                return web.json_response(
+                    {"success": False, "error": "unauthorized"}, status=401
+                )
 
         try:
             payload = await request.json()
