@@ -62,3 +62,9 @@ curl http://127.0.0.1:8080/webhook \
 
 `status` 为 `sent`（已调用发送接口）、`ignored`（无需通知）、`fallback_sent`（兜底发送）、`accepted`（3级已提交）或 `failed`（失败）。
 `accepted` 不代表 AI 已回复；`sent` 不代表用户已阅读。插件不自动重试，也不在 HTTP 响应中返回 AI 回复正文。
+
+## Codex task-notify skill
+
+技能源码位于 [skills/task-notify](skills/task-notify)，支持本机 AstrBot 与远程 Webhook，默认使用本机通知。
+
+将该文件夹复制到 `~/.codex/skills/`，填写其中的 `config.txt` 即可使用。仓库中配置值均为空，不包含个人凭据。
