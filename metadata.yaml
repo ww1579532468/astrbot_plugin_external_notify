@@ -1,6 +1,6 @@
 name: astrbot_plugin_external_notify
 display_name: 外部消息通知
-desc: 接收外部 HTTP 消息，支持直接转发、AI筛选、AI必达通知和主对话事件接入。附带 skill 的本机 0 级直接发送无需安装本插件。
+desc: 接收外部 HTTP 消息，支持直接转发、AI筛选、AI必达通知和主对话事件接入。
 version: 1.1.4
 author: ww
 astrbot_version: ">=4.16,<5"
