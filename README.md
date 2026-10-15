@@ -2,7 +2,8 @@
 
 接收 HTTP 消息，直接转发、由独立 AI 整理通知，或交给 AstrBot 主对话处理。
 
-仅需本机直接发送时，可单独使用附带 skill 的 `local.py` 调用 AstrBot 内置接口，无需安装本插件；该方式仅支持相当于 0 级的原文发送。Webhook 的 0～3 级处理仍需安装本插件。
+仅需本机直接发送时，可单独使用附带 skill 的 `local.py` 调用 AstrBot 内置接口，无需安装本插件。
+该方式仅支持原文发送。需求调用AI时仍需安装本插件。
 
 ## 配置
 
@@ -77,4 +78,4 @@ curl http://127.0.0.1:8080/webhook \
 python <技能目录>/scripts/local.py --message "任务已完成"
 ```
 
-本机脚本只直接发送正文，不接受 `--level`，不调用 AI，也不进入主对话。使用插件 Webhook 时，`webhook.py` 支持 `--level 0～3`（默认 0）及可选 `--target`。
+本机脚本只直接发送正文，不接受 `--level`，不调用 AI。使用插件 Webhook 时，`webhook.py` 支持 `--level 0～3`（默认 0）及可选 `--target`。
