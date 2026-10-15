@@ -2,6 +2,8 @@
 
 接收 HTTP 消息，直接转发、由独立 AI 整理通知，或交给 AstrBot 主对话处理。
 
+仅需本机直接发送时，可单独使用附带 skill 的 `local.py` 调用 AstrBot 内置接口，无需安装本插件；该方式仅支持相当于 0 级的原文发送。Webhook 的 0～3 级处理仍需安装本插件。
+
 ## 配置
 
 | 配置项 | 说明 |
@@ -68,3 +70,11 @@ curl http://127.0.0.1:8080/webhook \
 技能源码位于 [skills/task-notify](skills/task-notify)，支持本机 AstrBot 与远程 Webhook，默认使用本机通知。
 
 将该文件夹复制到 `~/.codex/skills/`，填写其中的 `config.txt` 即可使用。仓库中配置值均为空，不包含个人凭据。
+
+本机独立发送只需填写 `local` 配置，并保证 AstrBot 正在运行、目标平台在线，且支持 `/api/v1/im/messages`：
+
+```text
+python <技能目录>/scripts/local.py --message "任务已完成"
+```
+
+本机脚本只直接发送正文，不接受 `--level`，不调用 AI，也不进入主对话。使用插件 Webhook 时，`webhook.py` 支持 `--level 0～3`（默认 0）及可选 `--target`。

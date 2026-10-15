@@ -1,4 +1,4 @@
-"""通过本机 AstrBot 内置接口发送一次文本通知。"""
+"""通过本机 AstrBot 内置接口直接发送原文（相当于 0 级），无需通知插件。"""
 import argparse
 import base64
 import hashlib
