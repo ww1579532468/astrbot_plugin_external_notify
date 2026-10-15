@@ -1,6 +1,6 @@
 ---
 name: task-notify
-description: 用户要求“无人值守”“完成后通知我”“做完通知我”“向我的微信/QQ发送消息”或发送通知消息时使用；支持远程 Webhook 和本机 AstrBot 两种方式。
+description: 用户要求“无人值守”“完成后通知我”“做完通知我”“向我的什么发送消息”等通过astrbot通知消息时使用；支持远程 Webhook 和本机 AstrBot 两种方式。
 ---
 
 # 任务通知
